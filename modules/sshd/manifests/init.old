@@ -1,0 +1,19 @@
+class sshd {
+    package { 'openssh':
+      ensure => installed,
+    }
+    package { 'openssh-server':
+      ensure => installed,
+    }
+    package { 'openssh-clients':
+      ensure => installed,
+    }
+    package { 'openssl-libs':
+      ensure => installed,
+    }
+    file { 'sshd_config':
+      path => '/etc/ssh/sshd_config',
+      ensure => file,
+      source => 'puppet:///modules/sshd/sshd_config'
+    }
+}
